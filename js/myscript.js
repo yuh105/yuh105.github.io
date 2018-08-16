@@ -16,6 +16,7 @@ window.onload = function() {
   mysite.divCross = document.getElementById('cross-screen');
   mysite.divWhite = document.getElementById('white-screen');
   mysite.divRandomSquare = document.getElementById('random-square');
+  mysite.divBlackSquare = document.getElementById('black-square');
   mysite.theme = '';
 
   mysite.randomSquareRunning = false;
@@ -33,21 +34,24 @@ window.onload = function() {
   for(let i=0;i<100;i++) {
     createRandomSquare(mysite.divRandomSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*25), 'absolute', 'random', false);
   }
+  for(let i=0;i<30;i++) {
+    createRandomSquare(mysite.divBlackSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*25), 'absolute', 'black', false);
+  }
   // - - - - - - - - - - - - - - 
 
   // header nav button - - - - -
   mysite.navHome.onclick = function() {
     setHomePage();
-  }
+  };
   mysite.navWorks.onclick = function() {
     setWorksPage();
-  }
+  };
   mysite.navAbout.onclick = function() {
     setAboutPage();
-  }
+  };
   mysite.navSystem.onclick = function() {
     setSystemPage();
-  }
+  };
   // - - - - - - - - - - - - - - 
 
 
@@ -55,17 +59,15 @@ window.onload = function() {
   mysite.divWhite.onclick = function() {
     mainScreenClear();
     mysite.terminal.update('set white');
-  }
-
+  };
   mysite.divSquare.onclick = function(){
     createSquareBack(mysite.screen, mysite.figureInterval, 4, 'fixed', '#dddddd');
     mysite.terminal.update('set square');
-  }
+  };
   mysite.divCross.onclick = function(){
     createCrossBack(mysite.screen, mysite.figureInterval, 'fixed', '#dddddd');
     mysite.terminal.update('set cross');
-  }
-
+  };
   mysite.divRandomSquare.onclick = function() {
     // add 1
     createRandomSquare(mysite.divRandomSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*30), 'absolute', 'random', false);
@@ -85,10 +87,19 @@ window.onload = function() {
       mysite.terminal.update('start random_square &');
     }
 
-  }
+  };
+
+  mysite.divBlackSquare.onclick = function() {
+    mainScreenClear();
+    mysite.theme = 'blackSquare';
+    for( let i=0;i<50;i++) {
+      createRandomSquare(mysite.screen, Math.random()*1, Math.random()*150, 'fixed', 'black', terminal=false);
+    }
+    mysite.terminal.update('set black_square');
+  };
   // - - - - - - - - - - - - - - 
   mainScreenClear();
-}
+};
 
 // print random square function
 function randomSquarePrintStop() {
@@ -169,8 +180,8 @@ function createRandomSquare(target, minSize, maxSize, position, color, terminal=
     }
   }
   mysite.randomSquareNum += 1;
-  randomSquarePrintRun();
   if(terminal) {
+    randomSquarePrintRun();
     mysite.terminal.updateOver('square_num: ' + mysite.randomSquareNum);
   }
 

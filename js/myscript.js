@@ -17,11 +17,16 @@ window.onload = function() {
   mysite.divWhite = document.getElementById('white-screen');
   mysite.divRandomSquare = document.getElementById('random-square');
   mysite.divBlackSquare = document.getElementById('black-square');
+  mysite.divSquareInSquare = document.getElementById('square-in-square');
+
   mysite.theme = '';
 
   mysite.randomSquareRunning = false;
+  mysite.squareInSquareRunning = false;
+  mysite.squareInSquareParent = '';
   mysite.randomSquarePrint = document.getElementById('random-square-print');
   mysite.randomSquareId = '';
+  mysite.squareInSquareId = '';
   mysite.randomSquareNum = 0;
   mysite.randomSquareMaxNum = 2000;
 
@@ -37,6 +42,7 @@ window.onload = function() {
   for(let i=0;i<30;i++) {
     createRandomSquare(mysite.divBlackSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*25), 'absolute', 'black', false);
   }
+
   // - - - - - - - - - - - - - - 
 
   // header nav button - - - - -
@@ -97,6 +103,25 @@ window.onload = function() {
     }
     mysite.terminal.update('set black_square');
   };
+
+  mysite.divSquareInSquare.onclick = function() {
+    mysite.theme = 'squareInSquare';
+    const size = mysite.screen.clientHeight / 1.4; 
+    const initial_pos_x = mysite.screen.clientWidth/2 - size/2;
+    const initial_pos_y = mysite.screen.clientHeight/2 - size/2;
+
+    if(mysite.squareInSquareRunning) {
+      clearInterval(mysite.squareInSquareId);
+      mysite.squareInSquareRunning = false;
+    } else {
+      mysite.theme = 'squareInSquare';
+      mysite.squareInSquareRunning = true;
+      mysite.squareInSquareParent = new Square(document, initial_pos_x, initial_pos_y, size,size,'fixed','white', border="1px solid #ccc");
+
+      mysite.squareInSquareId = setInterval("createSquareInSquare(mysite.squareInSquareParent)", 30);
+    }
+  };
+
   // - - - - - - - - - - - - - - 
   mainScreenClear();
 };
@@ -193,6 +218,8 @@ function createRandomSquare(target, minSize, maxSize, position, color, terminal=
   target.appendChild(randSquare.getFigure());
 }
 
+
+
 // margin control
 function pageInit() {
   document.getElementById('header').style.marginBottom = window.innerHeight/100 * 8 + "px";
@@ -206,8 +233,10 @@ function pageInit() {
 // main screen init
 function mainScreenClear() {
   if(mysite.randomSquareRunning) {
+    clearInterval(mysite.squareInSquareId);
     clearInterval(mysite.randomSquareId);
     mysite.randomSquareRunning = false;
+    mysite.squareInSquareRunning = false;
   }
   mysite.screen.innerHTML = "";
   mysite.theme = '';

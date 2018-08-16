@@ -25,16 +25,48 @@ class Figure {
 }
 
 class Square extends Figure {
-  constructor(document, x, y, width, height, position,color) {
+  constructor(document, x, y, width, height, position, color, border="") {
     super(document, x, y, position, color);
     this.width = width;
     this.height = height;
+    this.border = border;
     this.figure.style.width = width + "px";
     this.figure.style.height = height + "px";
+    this.figure.style.border = border;
+    this.created = false;
   }
 
-  getFigure(figure) {
+  getFigure() {
     return this.figure;
+  }
+
+  squareInSquare(){
+    const span = 2;
+    const border_width = 1;
+    let child_width = ((this.width-border_width*2)-span*3)/2;
+    let child_height = ((this.height-border_width*2)-span*3)/2;
+    this.children = [];
+    this.created = true;
+
+    let random = Math.floor( Math.random() * (100 + 1));
+    if(random > 30)
+      this.children.push(new Square(document,span, span, child_width,child_height,'absolute',this.color, this.border));
+
+    random = Math.floor( Math.random() * (100 + 1));
+    if(random > 30)
+      this.children.push(new Square(document,child_width + span*2, span, child_width, child_height,'absolute',this.color, this.border));
+
+    random = Math.floor( Math.random() * (100 + 1));
+    if(random > 30)
+      this.children.push(new Square(document,child_width + span*2, child_height + span*2,child_width, child_height, 'absolute',this.color, this.border));
+
+    random = Math.floor( Math.random() * (100 + 1));
+    if(random > 30)
+      this.children.push(new Square(document, span, child_height + span*2, child_width,child_height,'absolute',this.color, this.border));
+
+    for(let i in this.children) {
+      this.getFigure().appendChild(this.children[i].getFigure());
+    }
   }
 }
 
@@ -75,7 +107,7 @@ class Terminal {
     this.prompt = "[~/" + this.dir + "]$ ";
     this.updateNormal(" - satokibi.github.io");
     this.theme = 'white';
-    
+
     this.elem.onclick = function() {
       document.getElementById('terminal').style.backgroundColor = 'black';
       document.getElementById('terminal').style.color = 'white';
@@ -123,6 +155,5 @@ class Terminal {
     }
     this.history.pop();
   }
-
 
 }

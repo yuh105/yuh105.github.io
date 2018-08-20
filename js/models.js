@@ -47,10 +47,14 @@ class Square extends Figure {
     let child_height = ((this.height-border_width*2)-span*3)/2;
     this.children = [];
     this.created = true;
+    // this.color = 'white'
 
     let random = Math.floor( Math.random() * (100 + 1));
+    // if(random > 60)
+        // this.children.push(new Square(document,span, span, child_width,child_height,'absolute','random', this.border));
+     // else if(random > 30)
     if(random > 30)
-      this.children.push(new Square(document,span, span, child_width,child_height,'absolute',this.color, this.border));
+      this.children.push(new Square(document,span, span, child_width,child_height,'absolute', this.color, this.border));
 
     random = Math.floor( Math.random() * (100 + 1));
     if(random > 30)

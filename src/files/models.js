@@ -47,12 +47,8 @@ class Square extends Figure {
     let child_height = ((this.height-border_width*2)-span*3)/2;
     this.children = [];
     this.created = true;
-    // this.color = 'white'
 
     let random = Math.floor( Math.random() * (100 + 1));
-    // if(random > 60)
-        // this.children.push(new Square(document,span, span, child_width,child_height,'absolute','random', this.border));
-     // else if(random > 30)
     if(random > 30)
       this.children.push(new Square(document,span, span, child_width,child_height,'absolute', this.color, this.border));
 
@@ -85,10 +81,8 @@ class Cross extends Figure {
 
     let style = document.getElementById('jsStyle');
     let target = "." + this.figure.className + "::after";
-    //let str_split = style.innerHTML.split(/[\{|\}]/);
     let str_split = style.innerHTML.split(' ');
     for(let s of str_split) {
-      // not add same rules
       if(s == target) {
         return;
       }
@@ -115,7 +109,7 @@ class Terminal {
     this.elem.onclick = function() {
       document.getElementById('terminal').style.backgroundColor = 'black';
       document.getElementById('terminal').style.color = 'white';
-    }
+    };
   }
 
   setDir(dir) {

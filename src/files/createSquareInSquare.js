@@ -5,7 +5,7 @@ function createSquareInSquare(parent_div) {
     parent_div.squareInSquare();
   }else {
     if(parent_div.children.length == 0)
-      console.log('finish')
+      console.log('finish');
     else{
       let flag1 = false;
       let flag4 = false;

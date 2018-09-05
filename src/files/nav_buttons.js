@@ -1,5 +1,4 @@
 
-// move page
 function setHomePage() {
   document.getElementById('terminal').style.display = 'block';
   document.getElementById('main-home').style.display = 'block';

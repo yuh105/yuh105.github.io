@@ -1,11 +1,8 @@
 var mysite = mysite || {}; 
 
 window.onload = function() {
-  // margin control - - - - 
   pageInit();
-  // - - - - - - - - - - - 
 
-  // set buttons var
   mysite.screen = document.getElementById('background-screen');
   mysite.figureInterval = 80;
   mysite.navHome = document.getElementById('nav-home');
@@ -31,9 +28,7 @@ window.onload = function() {
   mysite.randomSquareMaxNum = 2000;
 
   mysite.terminal = new Terminal(document);
-  // - - - - - - - - - - - - - - 
 
-  // div button print - - - - -
   createSquareBack(mysite.divSquare, 40, 4, 'absolute' ,'#dddddd');
   createCrossBack(mysite.divCross, 40, 'absolute' ,'#dddddd');
   for(let i=0;i<100;i++) {
@@ -43,9 +38,6 @@ window.onload = function() {
     createRandomSquare(mysite.divBlackSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*25), 'absolute', 'black', false);
   }
 
-  // - - - - - - - - - - - - - - 
-
-  // header nav button - - - - -
   mysite.navHome.onclick = function() {
     setHomePage();
   };
@@ -58,10 +50,8 @@ window.onload = function() {
   mysite.navSystem.onclick = function() {
     setSystemPage();
   };
-  // - - - - - - - - - - - - - - 
 
 
-  // work button
   mysite.divWhite.onclick = function() {
     mainScreenClear();
     mysite.terminal.update('set white');
@@ -75,7 +65,6 @@ window.onload = function() {
     mysite.terminal.update('set cross');
   };
   mysite.divRandomSquare.onclick = function() {
-    // add 1
     createRandomSquare(mysite.divRandomSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*30), 'absolute', 'random', false);
     if(mysite.randomSquareRunning) {
       clearInterval(mysite.randomSquareId);
@@ -122,11 +111,9 @@ window.onload = function() {
     }
   };
 
-  // - - - - - - - - - - - - - - 
   mainScreenClear();
 };
 
-// print random square function
 function randomSquarePrintStop() {
   mysite.randomSquarePrint.innerHTML = "<p>** create random square **</p>";
   mysite.randomSquarePrint.innerHTML += "<p>square_num: " + mysite.randomSquareNum + "</p>";
@@ -137,7 +124,6 @@ function randomSquarePrintRun() {
   mysite.randomSquarePrint.innerHTML += "<p>square_num: " + mysite.randomSquareNum + "</p>";
   mysite.randomSquarePrint.innerHTML += "<p>- running...</p>";
 }
-// - - - - - - - - - - - - - - 
 
 anime({
   targets: '.square',
@@ -145,7 +131,6 @@ anime({
 });
 
 
-// resize window
 (function () {
   var timer = 0;
   window.onresize = function () {
@@ -170,7 +155,6 @@ anime({
 }());
 
 
-// print back screen
 function createSquareBack(target, interval, size, position, color) {
   mainScreenClear();
   mysite.theme = 'square';
@@ -220,7 +204,6 @@ function createRandomSquare(target, minSize, maxSize, position, color, terminal=
 
 
 
-// margin control
 function pageInit() {
   document.getElementById('header').style.marginBottom = window.innerHeight/100 * 8 + "px";
   document.getElementById('footer').style.marginTop = window.innerHeight/100 * 8 + "px";
@@ -230,7 +213,6 @@ function pageInit() {
   document.getElementById('main-system').style.marginTop = window.innerHeight/100 * 6 + "px";
 }
 
-// main screen init
 function mainScreenClear() {
   if(mysite.randomSquareRunning) {
     clearInterval(mysite.squareInSquareId);
@@ -243,5 +225,3 @@ function mainScreenClear() {
   mysite.randomSquareNum = 0;
   randomSquarePrintStop();
 }
-
-

@@ -2,7 +2,6 @@ var mysite = mysite || {};
 
 window.onload = function() {
   pageInit();
-
   mysite.screen = document.getElementById('background-screen');
   mysite.figureInterval = 80;
   mysite.navHome = document.getElementById('nav-home');
@@ -16,6 +15,8 @@ window.onload = function() {
   mysite.divBlackSquare = document.getElementById('black-square');
   mysite.divSquareInSquare = document.getElementById('square-in-square');
 
+  mysite.div_button_flag = false;
+  
   mysite.theme = '';
 
   mysite.randomSquareRunning = false;
@@ -29,14 +30,6 @@ window.onload = function() {
 
   mysite.terminal = new Terminal(document);
 
-  createSquareBack(mysite.divSquare, 40, 4, 'absolute' ,'#dddddd');
-  createCrossBack(mysite.divCross, 40, 'absolute' ,'#dddddd');
-  for(let i=0;i<100;i++) {
-    createRandomSquare(mysite.divRandomSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*25), 'absolute', 'random', false);
-  }
-  for(let i=0;i<30;i++) {
-    createRandomSquare(mysite.divBlackSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*25), 'absolute', 'black', false);
-  }
 
   mysite.navHome.onclick = function() {
     setHomePage();

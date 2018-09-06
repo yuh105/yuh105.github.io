@@ -107,8 +107,8 @@ class Terminal {
     this.theme = 'white';
 
     this.elem.onclick = function() {
-      document.getElementById('terminal').style.backgroundColor = 'black';
-      document.getElementById('terminal').style.color = 'white';
+      document.getElementById('terminal').style.backgroundColor = 'white';
+      document.getElementById('terminal').style.color = 'black';
     };
   }
 

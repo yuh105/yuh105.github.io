@@ -46,8 +46,8 @@ body{
 
 #terminal {
   font-size: 10px;
-  width: 288px;
-  height: 156px;
+  width: 384px;
+  height: 244px;
   margin: auto;
   padding: 0 4px;
   background-color: black;
@@ -182,6 +182,7 @@ main html
   height: 184px;
   background-color: black;
   margin: auto;
+  margin-bottom: 8px;
 }
 #random-square-print {
   position: absolute;

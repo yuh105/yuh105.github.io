@@ -180,7 +180,7 @@ main html
 .card {
   width: 320px;
   height: 184px;
-  background-color: black;
+  background-color: #f8f8f8;
   margin: auto;
   margin-bottom: 8px;
 }

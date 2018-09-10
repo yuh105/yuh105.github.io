@@ -185,9 +185,17 @@ main html
   margin: 8px;
 }
 
+.card1 {
+  width: 224px;
+  height: 120px;
+}
+.card2 {
+  width: 160px;
+  height: 104px;
+}
 .card-list {
   width: 480px;
-  height: 764px;
+  height: 720px;
   margin: auto;
 }
 #random-square-print {

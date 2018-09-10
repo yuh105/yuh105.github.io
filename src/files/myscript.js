@@ -15,6 +15,25 @@ window.onload = function() {
   mysite.divBlackSquare = document.getElementById('black-square');
   mysite.divSquareInSquare = document.getElementById('square-in-square');
 
+  mysite.rettiwtCard = document.getElementById('rettiwt-card');
+  mysite.voxelrunCard = document.getElementById('voxelrun-card');
+  mysite.soundCloudCard = document.getElementById('soundcloud-card');
+
+
+  /*
+   works buttons
+   */
+  mysite.rettiwtCard.onclick = function() {
+    window.open('rettiwt/', 'newtab');
+  };
+  mysite.voxelrunCard.onclick = function() {
+    window.open('https://unityroom.com/games/voxelrun', 'newtab');
+  };
+  mysite.soundCloudCard.onclick = function() {
+    window.open('https://soundcloud.com/sugar_gt/chiptume', 'newtab');
+  };
+
+
   mysite.div_button_flag = false;
   
   mysite.theme = '';

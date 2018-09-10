@@ -13,8 +13,10 @@ window.onload = function() {
   mysite.divWhite = document.getElementById('white-screen');
   mysite.divRandomSquare = document.getElementById('random-square');
   mysite.divBlackSquare = document.getElementById('black-square');
+  /*
   mysite.divSquareInSquare = document.getElementById('square-in-square');
-
+  */
+  mysite.divSquareInSquare = "";
   mysite.rettiwtCard = document.getElementById('rettiwt-card');
   mysite.voxelrunCard = document.getElementById('voxelrun-card');
   mysite.soundCloudCard = document.getElementById('soundcloud-card');
@@ -24,13 +26,13 @@ window.onload = function() {
    works buttons
    */
   mysite.rettiwtCard.onclick = function() {
-    window.open('rettiwt/', 'newtab');
+    window.open('rettiwt/', '_blank');
   };
   mysite.voxelrunCard.onclick = function() {
-    window.open('https://unityroom.com/games/voxelrun', 'newtab');
+    window.open('https://unityroom.com/games/voxelrun', '_blank');
   };
   mysite.soundCloudCard.onclick = function() {
-    window.open('https://soundcloud.com/sugar_gt/chiptume', 'newtab');
+    window.open('https://soundcloud.com/sugar_gt/chiptume', '_blank');
   };
 
 

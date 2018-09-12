@@ -20,6 +20,7 @@ window.onload = function() {
   mysite.rettiwtCard = document.getElementById('rettiwt-card');
   mysite.voxelrunCard = document.getElementById('voxelrun-card');
   mysite.soundCloudCard = document.getElementById('soundcloud-card');
+  mysite.github = document.getElementById('github');
 
 
   /*
@@ -35,6 +36,12 @@ window.onload = function() {
     window.open('https://soundcloud.com/sugar_gt/chiptume', '_blank');
   };
 
+  /*
+  about buttons
+  */
+  mysite.github.onclick = function() {
+    window.open('https://github.com/satokibi', '_blank');
+  };
 
   mysite.div_button_flag = false;
   
@@ -125,6 +132,7 @@ window.onload = function() {
     }
   };
 
+  mysite.terminalInitId = setInterval("terminalInit()", 100);
   mainScreenClear();
 };
 

@@ -104,12 +104,28 @@ class Terminal {
     this.dir = "home";
     this.prompt = "[~/" + this.dir + "]$ ";
     this.updateNormal(" - satokibi.github.io");
-    this.theme = 'white';
+    this.theme = 'black';
+    this.message_max = 17;
+
+    this.init_flag = false;
+    this.init_count = 0;
+    this.init_message = ["satokibi.github.io version 2.0.09-12", "set - home", "set - works", "set - about", "set - system",
+                         "login: guest", "password: ",];
 
     this.elem.onclick = function() {
       /* document.getElementById('terminal').style.backgroundColor = 'white';
        document.getElementById('terminal').style.color = 'black'; */
     };
+  }
+
+  print_init() {
+    this.init_count += 1;
+    if(this.init_count == this.init_message.length){
+      this.updateNormal("Hello guest.");
+      return true;
+    }
+    this.updateNormal2(this.init_message[this.init_count]);
+    return false;
   }
 
   setDir(dir) {
@@ -120,7 +136,7 @@ class Terminal {
 
   update(str) {
     this.history.push(this.prompt + str);
-    if(this.history.length > 11) {
+    if(this.history.length > this.message_max) {
       this.history.shift();
     }
 
@@ -134,7 +150,7 @@ class Terminal {
 
   updateNormal(str) {
     this.history.push(str);
-    if(this.history.length > 11) {
+    if(this.history.length > this.message_max) {
       this.history.shift();
     }
 
@@ -143,6 +159,18 @@ class Terminal {
       this.elem.innerHTML += "<p>" + this.history[i] + "</p>";
     }
     this.elem.innerHTML += this.prompt;
+  }
+
+  updateNormal2(str) {
+    this.history.push(str);
+    if(this.history.length > this.message_max) {
+      this.history.shift();
+    }
+
+    this.elem.innerHTML = "";
+    for(let i=0;i<this.history.length;i++) {
+      this.elem.innerHTML += "<p>" + this.history[i] + "</p>";
+    }
   }
 
   updateOver(str) {

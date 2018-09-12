@@ -19,6 +19,7 @@ if __name__ == '__main__':
     myscript_js = 'files/myscript.js'
     nav_butons_js = 'files/nav_buttons.js'
     create_square_in_square_js = 'files/createSquareInSquare.js'
+    terminal_init = 'files/terminalInit.js'
 
     with open(write_html, mode='w') as wfile:
         create(wfile, index_html)
@@ -31,4 +32,5 @@ if __name__ == '__main__':
         create(wfile, myscript_js)
         create(wfile, nav_butons_js)
         create(wfile, create_square_in_square_js)
+        create(wfile, terminal_init)
 

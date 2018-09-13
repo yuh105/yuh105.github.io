@@ -8,6 +8,7 @@ index.html
 
 body{
   font-family: 'Source Code Pro', sans-serif;
+  -webkit-text-size-adjust: 100%;
 }
 
 #wrapper {

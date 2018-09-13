@@ -109,8 +109,20 @@ class Terminal {
 
     this.init_flag = false;
     this.init_count = 0;
-    this.init_message = ["satokibi.github.io version 2.0.09-12", "set - home", "set - works", "set - about", "set - system",
-                         "login: guest", "password: ",];
+    this.init_message = ["satokibi.github.io version 2.0.09-12", "Checking files",
+                         "Starting home", "Starting terminal",
+                         "Starting works", "Starting rettiwt", "Starting voxelrun", "Starting soundcloud",
+                         "Starting about", "Checking profile", "Checking Contact", "Checking skillset",
+                         "Starting system",
+                         "sa-g.io login: root"];
+
+    this.password = "*******";
+    this.pass_flags = [];
+    this.pass_count = 0;
+    this.rand_pass = Math.floor(Math.random() * 10);
+    for(let i=0;i<this.password.length;i++) {
+      this.pass_flags[i] = false;
+    }
 
     this.elem.onclick = function() {
       /* document.getElementById('terminal').style.backgroundColor = 'white';
@@ -118,10 +130,42 @@ class Terminal {
     };
   }
 
+  clear() {
+    this.history = [];
+    this.updateNormal(" - satokibi.github.io");
+  }
+
+  test() {
+    let pass_str = "Password: ";
+      for(let i=0;i<this.password.length;i++) {
+        if(this.pass_flags[i]) {
+          pass_str += this.password.charAt(i);
+        } else {
+          if(this.rand_pass < this.pass_count){
+            this.pass_flags[i] = true;
+            this.pass_count = 0;
+            this.rand_pass = Math.floor(Math.random() * 20);
+            break;
+          } else {
+            pass_str += String.fromCharCode(Math.floor(Math.random()*100)+32);
+            break;
+          }
+        }
+        if(i==this.password.length-1) {
+          this.init_flag = true;
+          this.updateNormal2(pass_str);
+          this.updateNormal('welcome');
+          return true;
+        }
+      }
+    this.updateOver(pass_str);
+    this.pass_count += 1;
+    return false;
+  }
+
   print_init() {
     this.init_count += 1;
     if(this.init_count == this.init_message.length){
-      this.updateNormal("Hello guest.");
       return true;
     }
     this.updateNormal2(this.init_message[this.init_count]);
@@ -129,9 +173,11 @@ class Terminal {
   }
 
   setDir(dir) {
-    this.prompt = "[~/" + dir + "]$ ";
-    this.updateNormal("[~/" + this.dir + "]$ " + "cd ~/" + dir);
-    this.dir = dir;
+    if(this.init_flag == true) {
+      this.prompt = "[~/" + dir + "]$ ";
+      this.updateNormal("[~/" + this.dir + "]$ " + "cd ~/" + dir);
+      this.dir = dir;
+    }
   }
 
   update(str) {

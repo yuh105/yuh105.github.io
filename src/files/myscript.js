@@ -27,7 +27,7 @@ window.onload = function() {
    works buttons
    */
   mysite.rettiwtCard.onclick = function() {
-    window.open('rettiwt/', '_blank');
+    window.open('https://yuucu.github.io/rettiwt/', '_blank');
   };
   mysite.voxelrunCard.onclick = function() {
     window.open('https://unityroom.com/games/voxelrun', '_blank');

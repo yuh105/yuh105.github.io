@@ -1,12 +1,12 @@
 Profile {
-  name   = satokibi;
+  name   = yuucu;
   age    = 22;
   birth  = 1995.10.05;
   gender = Male;
   locate = Fukuoka,JP;
   message = "
     始めまして。
-    satokibiです。
+    yuucuです。
     好きな食べ物は、卵料理と甘い物です。
     いつもは、pythonで自然言語処理や機械学習をしています。
     最近 フロントエンド系の技術も勉強しようと思いこのサイトを作成しました。
@@ -45,7 +45,7 @@ SkillSet {
 }
 
 Contact {
-  twitter = shugar_guitar;
-  github = satokibi;
-  email = dummy@d.co.jp;
+  twitter = y_uucu;
+  github = yuucu;
+  email = td182007@cis.fukuoka-u.ac.jp;
 }

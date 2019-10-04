@@ -40,7 +40,7 @@ window.onload = function() {
   about buttons
   */
   mysite.github.onclick = function() {
-    window.open('https://github.com/satokibi', '_blank');
+    window.open('https://github.com/yuucu', '_blank');
   };
 
   mysite.div_button_flag = false;

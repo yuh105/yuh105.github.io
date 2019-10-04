@@ -103,13 +103,13 @@ class Terminal {
     this.history = [];
     this.dir = "home";
     this.prompt = "[~/" + this.dir + "]$ ";
-    this.updateNormal(" - satokibi.github.io");
+    this.updateNormal(" - yuucu.github.io");
     this.theme = 'black';
     this.message_max = 17;
 
     this.init_flag = false;
     this.init_count = 0;
-    this.init_message = ["satokibi.github.io version 2.0.09-12", "Checking files",
+    this.init_message = ["yuucu.github.io version 2.0.09-12", "Checking files",
                          "Starting home", "Starting terminal",
                          "Starting works", "Starting rettiwt", "Starting voxelrun", "Starting soundcloud",
                          "Starting about", "Checking profile", "Checking Contact", "Checking skillset",
@@ -132,7 +132,7 @@ class Terminal {
 
   clear() {
     this.history = [];
-    this.updateNormal(" - satokibi.github.io");
+    this.updateNormal(" - yuucu.github.io");
   }
 
   test() {
